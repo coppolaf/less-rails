@@ -14,7 +14,7 @@ module Less
         require 'less-rails'
         Sprockets::Engines #force autoloading
         Sprockets.register_mime_type 'text/less', extensions: ['.less'] , charset: :css
-        Sprockets.register_engine '.less', LessTemplate
+        Sprockets.register_transformer '.less', LessTemplate
       end
 
       initializer 'less-rails.before.load_config_initializers', :before => :load_config_initializers, :group => :all do |app|
