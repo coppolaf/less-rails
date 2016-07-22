@@ -14,12 +14,12 @@ module Less
         require 'less-rails'
         Sprockets::Engines #force autoloading
         Sprockets.register_mime_type 'text/less', extensions: ['.less'] , charset: :css
-        Sprockets.register_engine 'text/less', 'text/css', LessTemplate
+#        Sprockets.register_engine 'text/less', 'text/css', LessTemplate
       end
 
       initializer 'less-rails.before.load_config_initializers', :before => :load_config_initializers, :group => :all do |app|
         sprockets_env = app.assets || Sprockets
-        sprockets_env.register_preprocessor 'text/css', ImportProcessor
+        sprockets_env.register_preprocessor 'text/less', ImportProcessor
 
         config.assets.configure do |env|
           env.context_class.class_eval do
